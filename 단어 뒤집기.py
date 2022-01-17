@@ -1,3 +1,4 @@
-a
+import sys
 
-addition
+num = int(input())
+
