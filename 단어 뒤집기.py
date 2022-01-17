@@ -1,5 +1,3 @@
-import sys
-
 num = int(input())
 
 stack = []
@@ -13,5 +11,3 @@ for j in range(num):
         print(stack[j][x][::-1]+" ",end='')
     if j != num-1:
         print("")
-
-
