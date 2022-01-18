@@ -8,6 +8,6 @@ for i in range(num):
     
 for j in range(num):
     for x in range(len(stack[j])):
-        print(stack[j][x][::-1]+" ",end='')
+        print(stack[j][x][::-1],end=' ')
     if j != num-1:
         print("")
