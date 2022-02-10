@@ -1,22 +1,22 @@
 import sys
 
-str = list(input())
-count = int(input())
-cursor = len(str)
+stack_1 = list(sys.stdin.readline().rstrip())
+stack_2 = []
 
-for i in range(count):
+for i in range(int(sys.stdin.readline())):
     commend = sys.stdin.readline().split()
 
     if commend[0] == "P":
-        str.insert(cursor,commend[1])
-        cursor += 1
-    elif commend[0] == "L" and cursor != 0:
-        cursor -= 1
-    elif commend[0] == "D" and cursor < len(str):
-        cursor += 1
-    elif commend[0] == "B" and cursor != 0:
-        del str[cursor-1]
-        cursor -= 1
+        stack_1.append(commend[1])
+    elif commend[0] == "L":
+        if stack_1:
+            stack_2.append(stack_1.pop())
+    elif commend[0] == "D" :
+        if stack_2:
+            stack_1.append(stack_2.pop())
+    elif commend[0] == "B":
+        if stack_1:
+            stack_1.pop()
 
-for i in str:
-    print(i,end='')
+stack_1.extend(reversed(stack_2))
+print("".join(stack_1))
