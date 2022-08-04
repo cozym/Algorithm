@@ -7,7 +7,7 @@ for i in range(int(sys.stdin.readline())):
     commend = sys.stdin.readline().split()
 
     if commend[0] == "push_front":
-        f_deque.append(commend[1])
+        f_deque.appendleft(commend[1])
     elif commend[0] == "push_back":
         b_deque.append(commend[1])
     elif commend[0] == "pop_front":
