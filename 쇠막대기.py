@@ -7,7 +7,7 @@ result = 0
 
 for i in range(len(commend)):
     if commend[i] == '(':
-        if commend[i+1] == ')':     # ()가 나온 경우 쇠막대기 스택의 길이만큼 결과에 +
+        if commend[i+1] == ')':     # ()가 나온 경우 스택의 길이(막대기 수)만큼 결과에 +
                 result += len(stick)
         else:
             stick.append(1)     # ( 가 나온 경우 다음이 )가 아니면 쇠막대기 스택에 push
