@@ -8,5 +8,3 @@ str = list(map(chr,sys.stdin.readline()))
 
 #real house
 
-
-
