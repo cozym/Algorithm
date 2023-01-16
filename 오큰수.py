@@ -4,6 +4,7 @@ nge_index = []
 L = len(seq)
 result = [-1 for i in range(L)]
 
+### 시간 초과 ###
 # for i in range(L):
 #     for j in range(i,L):
 #         if(seq[i] < seq[j]):
