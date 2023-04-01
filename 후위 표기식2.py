@@ -1,10 +1,24 @@
-import sys
+n = int(input())
+s = list(input())
+stack = []
+num = []
+for i in range(n):
+    num.append(int(input()))
 
-N = int(sys.stdin.readline().rstrip)
-str = list(map(chr,sys.stdin.readline()))
+for i in s:
+    if i.isalpha():
+        data = ord(i) - ord('A')
+        stack.append(num[data])
+    else:
+        b = stack.pop()
+        a = stack.pop()
+        if i == '+':
+            stack.append(a+b)
+        elif i == '-':
+            stack.append(a-b)
+        elif i == '*':
+            stack.append(a*b)
+        elif i =='/':
+            stack.append(a/b)
 
-## stack 기반 후위 표기식 - python / bracket문제 - java
-
-
-#real house
-
+print("%.2f" %stack[0])
