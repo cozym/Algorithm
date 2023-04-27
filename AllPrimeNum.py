@@ -11,5 +11,5 @@ for i in ans:
         if i%j==0:
             flag = 1
             break
-    if flag == 0:
+    if i!=1 and flag == 0:
         print(i)
