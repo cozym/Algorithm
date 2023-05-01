@@ -12,7 +12,7 @@ def Prime(n):
     return True
 
 while(r):
-    for i in range(2,r//2+1):
+    for i in range(3,r//2+1,2):
         if (Prime(i) and Prime(r-i)):
             print(r," = ",i," + ",r-i)
             break
