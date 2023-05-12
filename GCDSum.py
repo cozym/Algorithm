@@ -2,8 +2,10 @@
 import sys
 
 r = int(sys.stdin.readline())
+arr = []
+print(r)
 
 for i in range(r):
-
-  
-print(r)
+    arr.append(list(map(int,sys.stdin.readline().split())))
+    
+print(arr)
