@@ -18,4 +18,5 @@ gcd = A[1]-A[0]
 for i in range(1,len(A)):
     gcd = GCD(gcd,A[i]-A[i-1])  #간격끼리 최대공약수를 반복하여 구해줌
 
+
 print(gcd)
