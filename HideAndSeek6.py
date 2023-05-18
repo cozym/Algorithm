@@ -10,7 +10,7 @@ def GCD(a,b):
     while(a%b!=0):
         t=b
         b=a%b
-        a=b
+        a=t
     return b
 
 
