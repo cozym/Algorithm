@@ -1,7 +1,7 @@
+# 골드바흐 파티션 17103
 import sys
 
 r = int(sys.stdin.readline())
-#evens = []
 Primes = [True for t in range(1000001)]
 
 # 에라토스테네스의 채
