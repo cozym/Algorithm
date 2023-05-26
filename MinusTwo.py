@@ -1,3 +1,4 @@
+# -2진수 (2089)
 import sys
 
 r = int(sys.stdin.readline())
