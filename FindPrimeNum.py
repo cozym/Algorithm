@@ -13,7 +13,6 @@ for i in A:
     if Count==0:
         ans+=1
 
-
 if 1 in A:
     ans -= 1
 
