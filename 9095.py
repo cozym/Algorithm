@@ -6,10 +6,6 @@ L = []
 for i in range(T):
     L.append(int(sys.stdin.readline()))
 
-# if max(L)<3:
-#     dp = [range(3)]
-# else:
-#     dp = [0 for i in range(max(L))]
 dp = [0 for i in range(11)] 
 dp[0] = 1
 dp[1] = 2
