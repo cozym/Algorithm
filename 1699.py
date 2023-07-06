@@ -2,10 +2,13 @@
 import sys
 
 N = int(sys.stdin.readline())
-count = 0
+dp = [0 for i in range(N+1)]
 
-while N!=0:
-    N -= int(N**0.5)**2
-    count += 1
+# dp[i] = min(dp[i-j**2])+1
+for i in range(N+1):
+    dp[i] = i
+    for j in range(int(i**0.5)+1):
+        if dp[i] > dp[i-j**2]+1:
+            dp[i] = dp[i-j**2]+1
 
-print(count)
+print(dp[N])
