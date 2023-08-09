@@ -2,15 +2,13 @@
 import sys
 
 H = int(sys.stdin.readline())
-# dp[n][x][y] : x,y좌표에 n마리를 배치하는 방법의 수
-dp = [[[1,1] if j==0 else [0,0] for i in range(H)] for j in range(H)]
+# dp[n][x] = dp[n-1][y] ( y는 x를 제외한 부분, 0일때는 모두 포함 )
+# x=0 : 노배치 , x=1 : 왼쪽배치 , x=2 : 오른쪽배치
+dp = [[1,1,1] if i==0 else [0,0,0] for i in range(H)]
 
-for nums in range(1,H):
-    for x in range(H):
-        for y in range(2):
-            if x < H-1:
-                dp[nums][x][y] = sum(dp[nums-1][x+1:H-nums])-dp[nums-1][x+1][0]
+for n in range(1,H):
+    dp[n][0] = sum(dp[n-1]) % 9901
+    dp[n][1] = dp[n-1][0] + dp[n-1][2] % 9901
+    dp[n][2] = dp[n-1][0] + dp[n-1][1] % 9901
 
-
-print(dp)
-#for r in range(H):
+print(sum(dp[H-1])%9901)
