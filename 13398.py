@@ -11,13 +11,6 @@ M = S[0] # max값 저장
 for i in range(1,n):
     if dp[i] < dp[i-1]+S[i]:
         dp[i] = dp[i-1]+S[i]
-    if dp_r[i] < dp_r[i-1]+S[i]:
-        dp_r[i] = dp_r[i-1]+S[i]
-    if dp_r[i] < dp[i-2]+S[i]:
-        #M = dp[i-2]+S[i]
-        dp_r[i] = dp[i-2]+S[i]
-        dp_r[i-2] = dp[i-2]
-    #if dp_r[i] > M:
-    #    M = dp_r[i]
-#print(dp_r)
+    dp_r[i] = max(dp[i-1],dp_r[i-1]+S[i])
+    
 print(max(max(dp),max(dp_r)))
