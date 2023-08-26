@@ -36,9 +36,9 @@ for k in range(N):
 
         Change_seat(A[k][r],A[k][r+1],True)
     for c in range(N-1):
-        Change_seat(A[k][r],A[k][r+1],False)
+        Change_seat(A[c][k],A[c+1][k],False)
 
-        Change_seat(A[k][r],A[k][r+1],False)
+        Change_seat(A[c][k],A[c+1][k],False)
 
 
 # for r in range(len(A)):
