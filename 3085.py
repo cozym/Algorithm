@@ -4,6 +4,7 @@ import sys
 N = int(sys.stdin.readline())
 A = []
 columns = [[] for i in range(N)]
+res = 0
 
 # 행
 for i in range(N):
@@ -27,17 +28,28 @@ def Change_seat(r,c,isrow):
         A[r+1][c] = tmp
 
 # 가로, 세로로 같은 색 최대 개수 카운트
-#def Count_max():
+def Count_max(k,r):
+    count = 1
+    for i in range(1,N):
+        if A[k][i] == A[k][i-1]: # 해당 행의 연속 계산
+            count+=1
+            if res < count: # 최대 길이 저장
+                res = count
+        else:
+            count=1
+    for j in range(1,N):
+        if A[i][r]
+
 
 
 for k in range(N):
     for r in range(N-1):
         Change_seat(A[k][r],A[k][r+1],True)
-
+        #Count_max()
         Change_seat(A[k][r],A[k][r+1],True)
     for c in range(N-1):
         Change_seat(A[c][k],A[c+1][k],False)
-
+        #Count_max()
         Change_seat(A[c][k],A[c+1][k],False)
 
 
