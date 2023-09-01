@@ -12,9 +12,6 @@ for i in range(N):
     A.append([])
     for j in row:
         A[i].append(j)
-    #rows.append(list(map(str,sys.stdin.readline().split(''))))
-    #for j in range(N):   # 열 미리 구분저장
-    #    columns[j].append(row[j])
 
 # 두 원소 자리바꾸기
 def Change_seat(r,c,isrow):

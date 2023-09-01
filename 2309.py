@@ -21,4 +21,3 @@ res.sort()
 
 for p in res:
     print(p)
-

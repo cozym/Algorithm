@@ -6,8 +6,8 @@ d = int(sys.stdin.readline())
 dead_nums = []
 if d!=0:
     dead_nums = list(map(str,sys.stdin.readline().split()))
-res = 1000000
-Immediate = 0
+res = 1000000   # 정답에는 최솟값이 들어가므로 최댓값으로 초기설정
+Immediate = 0   # N과 가장 가까운 수 저장
 
 # 고장난 번호들이 들어가지 않은 수 중 N과 가장 가까운 수 찾기
 for j in range(1000001):
