@@ -15,6 +15,6 @@ d = [[2,2,]]    # 4경우
 e = [[2,3]] # 4경우
 
 # 좌측 상단을 시작좌표로 하여 가로*세로 범위의 합 - 무효좌표를 검토
-for i in range():
+for i in range(r):
 
-print(pad)
+#print(pad)
