@@ -5,7 +5,7 @@ T = int(sys.stdin.readline())
 
 for i in range(T):
     M,N,x,y = map(int,sys.stdin.readline().split())
-    for date in range(x,40001,M):
+    for date in range(x,M*N+x+1,M):
         if date%N==0:
             tmp_y = N
         else:
