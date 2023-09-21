@@ -11,8 +11,7 @@ used = [False for i in range(N+1)]
 # 함수로 들어갈때마다 N만큼 반복문을 돌리고 사용되지 않은 수를 used로 체크하여 사용
 def recursion(idx,N,M):
     if idx==M:
-        if p==sorted(p):
-            print(*p)
+        print(*p)
         return
     for i in range(1,N+1):
         if used[i]:
