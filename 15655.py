@@ -1,4 +1,4 @@
-# N과 M (5)
+# N과 M (6)
 import sys
 
 N,M = map(int,sys.stdin.readline().split())
