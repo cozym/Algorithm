@@ -28,9 +28,11 @@ def cost(check_in):
     sum = 0
     global res
     for i in range(1,N+1):
-        if W[check_in[i-1]][check[i]]==0: # 길이 없는 경우
+        tmp = W[check_in[i-1]][check_in[i]]
+        if tmp==0: # 길이 없는 경우
             return
-        sum += W[check_in[i-1]][check[i]]
+        else:
+            sum += tmp
     if res<0: # 초기값 설정
         res = sum
     elif res > sum:
