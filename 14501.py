@@ -24,15 +24,6 @@ def Resignation(idx,s):
         return
     if idx > N+1:
         return
-        #global max_sum
-        T_sum = 0
-        P_sum = 0
-        # for i in check:
-        #     P_sum += P[i]
-        # if P_sum > max_sum:
-        #     max_sum = P_sum
-        #     print(max_sum)
-        #return 
     Resignation(idx+1,s)    
     Resignation(idx+T[idx-1],s+P[idx-1])   
 
