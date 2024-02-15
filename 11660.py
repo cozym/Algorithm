@@ -17,8 +17,6 @@ for c in range(1,N+1):
     for i in range(1,N+1):
         table[i][c] += table[i-1][c]
 
-print(table)
-
 for i in range(M):
     res = 0
     x1,y1,x2,y2 = map(int,sys.stdin.readline().split())
