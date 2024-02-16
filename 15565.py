@@ -19,8 +19,6 @@ for idx in range(N):
         first = rion_pointer.popleft()
         if res > idx-first+1:
             res = idx-first+1
-        # if res > rion_pointer[-1]-rion_pointer[0]+1:
-        #     res = rion_pointer[-1]-rion_pointer[0]+1
         rion_cnt -= 1
     
 if res==N+10:
