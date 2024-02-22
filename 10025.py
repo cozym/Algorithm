@@ -4,7 +4,6 @@ input = sys.stdin.readline
 MAX_X = 1000001
 N,K = map(int,input().split())
 iceBucket = [0]*1000001
-iceSum = [0]*1000001
 
 for _ in range(N):
     g,x = map(int,input().split())
