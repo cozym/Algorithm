@@ -1,6 +1,7 @@
 # 연결 요소의 개수
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10000)
 
 N,M = map(int,input().split())
 R = [[] for _ in range(N+1)]

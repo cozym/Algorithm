@@ -14,7 +14,6 @@ for _ in range(M):
 
 for i in range(1,N+1):
     R[i].sort()
-    print(R[i])
 
 def DFS(node):
     visit[node] = True
@@ -40,6 +39,4 @@ DFS(V)
 visit = [False for i in range(N+1)]
 print()
 
-# for idx in range(1,N+1):
-#     if visit[idx] == False:
 BFS(V)
