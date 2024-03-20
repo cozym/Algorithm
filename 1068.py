@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 트리
 import sys
 from collections import deque
@@ -30,3 +31,6 @@ if removeNode == root:
     print(0)
 else:
     print(leafNode)
+=======
+
+>>>>>>> fetch_head
