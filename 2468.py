@@ -1,7 +1,7 @@
 # 안전 영역
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(15000)
 
 low,high,waterHigh = 100,0,0
 cnts = []
