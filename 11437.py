@@ -24,51 +24,21 @@ while len(Q) != 0:
         current = Q.popleft()
         for node in R[current]:
             if not visit[node]:
-                parentInfo[node] = [current,depth]
+                parentInfo[node] = [current,depth]  # 각 노드의 부모와 깊이 정보
                 Q.append(node)
                 visit[node] = True
     depth += 1
 
 # 최소 공통 조상 탐색
 def LCA(node1, node2):
-    ancestor = []
     parent1 = node1
     parent2 = node2
-    # if parent1 == parent2:
-    #     print(parent1)
-    #     return
-    # elif parentInfo[parent1][0] == parent2:
-    #     print(parent2)
-    #     return
-    # elif parent1 == parentInfo[parent2][0]:
-    #     print(parent1)
-    #     return
-    while True:
-        if parent1 == parent2:
-            print(parent1)
-            break
-        # if parentInfo[parent1][0] == parentInfo[parent2][0]:
-        #     print(parentInfo[parent1][0])
-        #     break
-        if parentInfo[parent1][1] >= parentInfo[parent2][1]:
+    while parent1 != parent2:
+        if parentInfo[parent1][1] >= parentInfo[parent2][1]:    # 깊이로 비교 및 조정
             parent1 = parentInfo[parent1][0]
         else:
             parent2 = parentInfo[parent2][0]
-    
-    # parent = node2
-    # while True:
-    #     if parent == 0: # 조상이 루트 노드에 닿으면 스탑
-    #         break
-    #     ancestor.append(parent)
-    #     parent = parentInfo[parent]
-    # parent = node1
-    # while True:
-    #     if parent in ancestor:
-    #         print(parent)
-    #         break
-    #     if parent == 0:
-    #         break
-    #     parent = parentInfo[parent]
+    print(parent1)
 
 for _ in range(int(input())):
     n1,n2 = map(int,input().split())
