@@ -6,7 +6,8 @@ input = sys.stdin.readline
 N = int(input())
 R = [[] for _ in range(N+1)]
 visit = [False for _ in range(N+1)]
-parentInfo = {}
+parentInfo = [0]*(N+1)
+depths = [0]*(N+1)
 Q = deque()
 
 for _ in range(N-1):
@@ -16,7 +17,8 @@ for _ in range(N-1):
 
 Q.append(1)
 visit[1] = True
-parentInfo[1] = [0,0] # 루트 노드의 부모를 0으로 설정
+parentInfo[1] = 0 # 루트 노드의 부모를 0으로 설정
+depths[1] = 0
 depth = 1
 while len(Q) != 0:
     cycle = len(Q)
@@ -24,7 +26,8 @@ while len(Q) != 0:
         current = Q.popleft()
         for node in R[current]:
             if not visit[node]:
-                parentInfo[node] = [current,depth]  # 각 노드의 부모와 깊이 정보
+                parentInfo[node] = current  # 각 노드의 부모와 깊이 정보
+                depths[node] = depth
                 Q.append(node)
                 visit[node] = True
     depth += 1
@@ -33,11 +36,14 @@ while len(Q) != 0:
 def LCA(node1, node2):
     parent1 = node1
     parent2 = node2
-    while parent1 != parent2:
-        if parentInfo[parent1][1] >= parentInfo[parent2][1]:    # 깊이로 비교 및 조정
-            parent1 = parentInfo[parent1][0]
+    while depths[parent1] != depths[parent2]:
+        if depths[parent1] >= depths[parent2]:    # 깊이 맞추기
+            parent1 = parentInfo[parent1]
         else:
-            parent2 = parentInfo[parent2][0]
+            parent2 = parentInfo[parent2]
+    while parent1 != parent2:   # 공통 조상 찾기
+        parent1 = parentInfo[parent1]
+        parent2 = parentInfo[parent2]
     print(parent1)
 
 for _ in range(int(input())):
