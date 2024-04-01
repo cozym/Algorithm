@@ -8,7 +8,7 @@ N = int(input())
 R = [[] for _ in range(N+1)]
 distance = [INF for _ in range(N+1)]
 Q = []
-# M = int(input())
+
 for _ in range(int(input())):
     s,d,c = map(int,input().split())
     R[s].append([c,d])
@@ -22,7 +22,7 @@ while Q:
 
     if distance[nowNode] < nowCost:
         continue
-    
+
     for node in R[nowNode]:
         nextCost, nextNode = node[0], node[1]
         if nowCost + nextCost < distance[nextNode]:
