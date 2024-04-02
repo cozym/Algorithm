@@ -1,34 +1,41 @@
 import sys
-sys.setrecursionlimit(100000)
+import heapq
+
 input = sys.stdin.readline
+INF = int(1e9)
 
-N,L,R = map(int, input().split())
-population = []
-population = [list(map(int, input().split())) for _ in range(N)]
-dx, dy = [-1,0,1,0],[0,-1,0,1]
+v, e = map(int, input().split())
+start = int(input())
 
-def dfs(x,y):
-    global check
-    global union_list
-    for i in range(4):
-        nx= x+dx[i]
-        ny = y+dy[i]
-        
-        if 0 <= nx <N and 0 <= ny <N and check[nx][ny]:
-            if L <= abs(population[x][y]-population[nx][ny]) <= R:
-                check[nx][ny] = True
-                union_list.append([nx,ny])
-                dfs(nx,ny)
+graph = [[] * (v+1) for _ in range(v+1)]
+distance = [11] * (v+1)
 
-while(1):
-    check = [ False * N for _ in range(N)]
-    for i in range(population):
-        for j in range(population[i]):
-            union_list = []
-            if check[i][j]:
-                union_list.append([i,j])
-                check[i][j] = True
-                dfs(i,j)
+for _ in range(e):
+    u, v, w = map(int, input().split())
+    graph[u].append((v, w))
 
-                if len(union_list) > 1:
-                    
+
+def dijkstra(start):
+    q = []
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
+
+    while q:
+        dist, node = heapq.heappop(q)
+        if distance[node] < dist:
+            continue
+        for next in graph[node]:
+            cost = distance[node] + next[1]
+            if cost < distance[next[0]]:
+                distance[next[0]] = cost
+                heapq.heappush(q, (cost, next[0]))
+
+
+dijkstra(start)
+print(distance)
+
+for i in range(1, v+1):
+    if distance[i] == 11:
+        print("INF")
+        continue
+    print(distance[i])
