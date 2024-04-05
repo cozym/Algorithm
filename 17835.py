@@ -13,10 +13,12 @@ interview = list(map(int,input().split()))
 distance = [INF for _ in range(N+1)]
 res = (0,0)
 
-def dijkstra(start):
-    distance[start] = 0
+def dijkstra():
+    # distance[start] = 0
     Q = []
-    heappush(Q,(0,start))
+    for i in interview:
+        heappush(Q,(0,i))
+        distance[i] = 0
 
     while Q:
         nowCost, nowNode = heappop(Q)
@@ -28,9 +30,12 @@ def dijkstra(start):
                 distance[nextNode] = cost
                 heappush(Q,(cost,nextNode))
 
-for i in interview:
-    dijkstra(i)  
+# for i in interview:
+#     dijkstra(i)  
+
 distance[0] = -1
+
+dijkstra()
 
 d = max(distance)
 c = distance.index(d)
