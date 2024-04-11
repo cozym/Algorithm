@@ -12,7 +12,9 @@ def recursion(idx, cnt, yj):
             global res
             res += 1
         return
-    
+    if 10-idx + cnt < 5:
+        return
+
     for i in range(1,6):
         correct = cnt
         if answer[idx]==i:
