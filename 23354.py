@@ -9,7 +9,7 @@ ny = [-1,0,1,0]
 
 N = int(input())
 costMap = []
-deserters = []
+deserters = []  # 탈영병 위치
 distances = {} # 탈영병의 위치로부터 최단거리들
 ans = INF
 

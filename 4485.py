@@ -7,17 +7,17 @@ nX = [0,1,0,-1]
 nY = [-1,0,1,0]
 
 def dijkstra(n):
-    distance = [[INF for _ in range(n)] for _ in range(n)]
-    distance[0][0] = cave[0][0]
+    distance = [[INF for _ in range(n)] for _ in range(n)]  # 각 좌표를 노드로 삼기위해 INF로 초기화
+    distance[0][0] = cave[0][0] # 시작 좌표의 weight는 [0,0]에 놓여진 도둑루피값
     q = []
-    heappush(q,[cave[0][0],(0,0)])
+    heappush(q,[cave[0][0],(0,0)])  # 시작 위치의 weight와 좌표를 push
 
     while q:
         nowCost,nowPosition = heappop(q)
         x,y = nowPosition
-        if distance[y][x] < nowCost:
+        if distance[y][x] < nowCost:    # 우선순위 큐로 꺼내온 코스트가 앞서 저장된 값보다 크면 검사 스킵
             continue
-        for idx in range(4):
+        for idx in range(4):    # 사방 탐색 + 인접 노드들의 최솟값 비교 및 업데이트
             nextX = x + nX[idx]
             nextY = y + nY[idx]
             if 0 <= nextX and nextX < n and 0 <= nextY and nextY < n:

@@ -5,12 +5,12 @@ input = sys.stdin.readline
 N = int(input())
 A = list(map(int,input().split()))
 operators = list(map(int,input().split()))
-maxRes = -1e9
-minRes = 1e9
+maxRes = -int(1e9)
+minRes = int(1e9)
 
 def searchMaxMin(idx, n, add, sub, mul, div):
+    global maxRes,minRes
     if idx == N:
-        global maxRes,minRes
         maxRes = max(maxRes,n)
         minRes = min(minRes,n)
         return
