@@ -1,6 +1,4 @@
 # 단풍잎 이야기
-<<<<<<< HEAD
-=======
 import sys
 from itertools import combinations
 input = sys.stdin.readline
@@ -35,4 +33,3 @@ for skillSet in mySkillSet:
     countSolveQuest(skills[:])
 
 print(res)
->>>>>>> 43672b1899370d93b1b4f66bb3c5d439f8daa6a8
