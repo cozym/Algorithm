@@ -17,8 +17,6 @@ def recursion(idx, state, egg, dead):
         global res
         res = max(res, dead)
         return
-    if dead+(N-idx) < res:
-        return
     if not state[idx] or state.count(True)==1:
         recursion(idx+1, state[:], egg[:], dead)
         return
