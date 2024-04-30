@@ -24,7 +24,7 @@ def findCityDistance(chickenGroup):
             d = min(d,(abs(hx-cx) + abs(hy-cy)))
         citySum += d
         if citySum > res:
-            break
+            return
     res = min(citySum,res)
 
 ch = combinations(chicken,M)
