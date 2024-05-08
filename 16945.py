@@ -12,29 +12,19 @@ res = 100
 
 square = [0 for _ in range(9)]
 def recur(idx):
-    lineS = 0
-    for c in checkIdx:
-        s = 0
-        for j in c:
-            if square[j] == 0:
-                break
-            s += square[j]
-        else:
-            if lineS == 0:
-                lineS = s
-            else:
-                if lineS != s:
-                    return
-    
-    cost = 0
-    for i in range(9):
-        if square[i] != 0:
-            cost += abs(square[i]-arr[i])
-    global res
-    if cost > res:
-        return
-
     if idx == 9:
+        cost = 0
+        global res
+        lineS = square[0]+square[1]+square[2]
+        for c in checkIdx:
+            s = 0
+            for j in c:
+                s += square[j]
+            if lineS != s:
+                return
+        for i in range(9):
+            if square[i] != 0:
+                cost += abs(square[i]-arr[i])
         res = min(res, cost)
         return
     
