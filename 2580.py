@@ -15,57 +15,34 @@ for x in range(9):
         if line[y] == 0:
             zeroIdx.append((x,y))
 
-# def check():
-#     for t in range(9):
-#         col = [False for _ in range(10)]
-#         row = [False for _ in range(10)]
-#         for k in range(9):  # 행, 열 조건검사, 안맞으면 종료
-#             c = pad[t][k]
-#             r = pad[k][t]
-#             if c != 0 and col[c]:
-#                 return False
-#             if r != 0 and row[r]:
-#                 return False
-#             col[c] = True
-#             row[r] = True
-    
-#     for rs in checkIdx: # 3*3 조건검사
-#         for cs in checkIdx:
-#             square = [False for _ in range(10)]
-#             for r in rs:
-#                 for c in cs:
-#                     n = pad[r][c]
-#                     if n != 0 and square[n]:
-#                         return False
-#                     square[n] = True
-#     return True
+def checkRow(x,n):
+    for k in range(9):  # 행 조건검사
+        if pad[x][k] == n:
+            return False
+    return True
+
+def checkCol(y,n):
+    for k in range(9):  # 열 조건검사
+        if pad[k][y] == n:
+            return False
+    return True
+
+def checkBox(x,y,n):
+    for ix in checkIdx: # 속한 3*3 위치파악
+        if x in ix:
+            a = ix
+        if y in ix:
+            b = ix
+
+    for r in a: # 3*3 조건검사
+        for c in b:
+            if pad[r][c] == n:
+                return False
+    return True
+
 
 L = len(zeroIdx)
 def recur(idx):
-    # x,y = prex,prey
-    for t in range(9):
-        col = [False for _ in range(10)]
-        row = [False for _ in range(10)]
-        for k in range(9):  # 행, 열 조건검사, 안맞으면 종료
-            c = pad[t][k]
-            r = pad[k][t]
-            if c != 0 and col[c]:
-                return
-            if r != 0 and row[r]:
-                return
-            col[c] = True
-            row[r] = True
-
-    for rs in checkIdx: # 3*3 조건검사
-        for cs in checkIdx:
-            square = [False for _ in range(10)]
-            for r in rs:
-                for c in cs:
-                    n = pad[r][c]
-                    if n != 0 and square[n]:
-                        return
-                    square[n] = True
-
     if idx == L:
         for line in pad:
             print(*line)
@@ -73,8 +50,9 @@ def recur(idx):
 
     x,y = zeroIdx[idx]
     for i in range(1,10):
-        pad[x][y] = i
-        recur(idx+1)
-        pad[x][y] = 0
+        if checkRow(x,i) and checkCol(y,i) and checkBox(x,y,i):
+            pad[x][y] = i
+            recur(idx+1)
+            pad[x][y] = 0
 
 recur(0)
