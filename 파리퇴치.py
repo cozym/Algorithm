@@ -15,6 +15,5 @@ for test_case in range(1, T + 1):
             for r in range(x,x+M):
                 s += sum(area[r][y:y+M])
             res = max(res, s)
-
     print("#{} {}".format(test_case,res))
     # ///////////////////////////////////////////////////////////////////////////////////
