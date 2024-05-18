@@ -1,6 +1,6 @@
 # 암호생성기
 from collections import deque
-T = int(input())
+T = 10
 # 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
 for test_case in range(1, T + 1):
     # ///////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +16,7 @@ for test_case in range(1, T + 1):
         m += 1
         if m == 6:
             m = 1
-    print(password)
+
     print('#{} '.format(test_case),end='')
     for i in password:
         print(i,end=' ')
