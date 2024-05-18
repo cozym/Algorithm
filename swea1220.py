@@ -18,5 +18,5 @@ for test_case in range(1, T + 1):
                 now = table[r][c]
         res += cnt//2
 
-    print('{} {}'.format(test_case, res))
+    print('#{} {}'.format(test_case, res))
     # ///////////////////////////////////////////////////////////////////////////////////

@@ -1,7 +1,7 @@
 # 퇴사 2
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(100000000)
+# sys.setrecursionlimit(100000000)
 
 N = int(input())
 coun = []
