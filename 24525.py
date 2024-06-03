@@ -1,13 +1,15 @@
 # SKK 문자열
-# s가 1개인 인덱스, k가 1개인 인덱스
 import sys
 input = sys.stdin.readline
-
-S = input().strip()
-prefixSumIdx = [0]*200010
+INF = -1000000
+S = input().rstrip()
 prefixS = [0]
 prefixK = [0]
 res = -1
+prefixSumIdx = {}
+for i in range(-200001,200002):
+    prefixSumIdx[i] = INF
+prefixSumIdx[0] = 0
 
 for i in range(1,len(S)+1):
     prefixS.append(prefixS[i-1])
@@ -16,10 +18,11 @@ for i in range(1,len(S)+1):
         prefixS[i] += 1
     elif S[i-1] == 'K':
         prefixK[i] += 1
-    now = prefixSumIdx[2*prefixS[i]-prefixK[i]]
-    if prefixSumIdx[2*prefixS[i]-prefixK[i]] == 0:    # 2*S - K 값이 처음 나온다면
-        prefixSumIdx[2*prefixS[i]-prefixK[i]] = i
+    now = 2*prefixS[i]-prefixK[i]   # 현재까지의 누적 S,K로 계산한 2*S - k
+    if prefixSumIdx[now] == INF:    # 0이상의 2*S - K 값이 처음 나온다면 그 자리에 현재 인덱스 저장
+        prefixSumIdx[now] = i
     else:
-        res = max(res, i - prefixSumIdx[2*prefixS[i]-prefixK[i]])   # 이미 해당 누적합값이 존재한다면 거리 계산
+        if prefixK[i]-prefixK[prefixSumIdx[now]] >= 2 and prefixS[i]-prefixS[prefixSumIdx[now]] >= 1:    # 그 구간에 k가 2개 이상, s가 1개 이상인 경우만
+            res = max(res, i - prefixSumIdx[now])   # 2*S - k가 앞서 나왔다면 거리 계산
 
 print(res)

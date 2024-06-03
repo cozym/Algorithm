@@ -1,5 +1,4 @@
 # 나는 정말 휘파람을 못 불어
-
 import sys
 input = sys.stdin.readline
 
@@ -15,11 +14,11 @@ for i in range(1,N+1):
     if S[i-1] == 'E':
         e[i] += 1
     elif S[i-1] == 'H':
-        h = (2**e[i] - e[i] - 1 + h) % 1000000007   # 해당 H위치에서 다룰 수 있는 E 카운트
+        h = (2**e[i] - e[i] - 1 + h)   # 해당 H위치에서 다룰 수 있는 E 카운트
     elif S[i-1] == 'W':
-        res += h % 1000000007
+        res += h
 
-print(res)
+print(res%1000000007)
 
 
 # > 8 - 3 - 1 = 4

@@ -4,7 +4,7 @@ input = sys.stdin.readline
 
 N,K = map(int,input().split())
 temps = list(map(int,input().split()))
-res = 0
+res = -1e9
 
 ## 슬라이딩 윈도우
 # sequence_sum = []
