@@ -9,8 +9,8 @@ for _ in range(B):
     light[int(input())] = False
 
 res = light[1:K+1].count(False)
+current = res
 for i in range(K+1,N+1):
-    current = res
     if not light[i-K]:
         current -= 1
     if not light[i]:
