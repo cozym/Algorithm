@@ -21,3 +21,5 @@ def recur(idx, weight):
     return dp[idx][weight]
 
 print(recur(0,0))
+
+# bottom-up : dp[idx] = if bag[idx][0]+dp[i]
