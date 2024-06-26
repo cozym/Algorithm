@@ -6,19 +6,19 @@ input = sys.stdin.readline
 N,K = map(int,input().split())
 point = [0]*100001
 
-def bfs(x,k):
+def bfs(n,k):
     q = deque()
-    if x == 0:
+    if n == 0:
         q.append(1)
     else:
-        q.append(x)
+        q.append(n)
     
     while q:
         x = q.popleft()
         if x==k:
             return point[x]
 
-        for nx in (x*2,x+1,x-1):
+        for nx in (x-1,x+1,x*2):
             if 0 <= nx <= 100000 and point[nx]==0:
                 if nx == 2*x:
                     point[nx] = point[x]
