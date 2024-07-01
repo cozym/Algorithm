@@ -15,21 +15,17 @@ for _ in range(N-1):
 
 def dfs(node):
     visited[node] = True
-    # global res
-    if node == b:
-        if costBetweenab:
+    if node == b:   # 방문한 노드가 반대쪽 로봇의 위치라면
+        if costBetweenab:   # 로봇 사이의 코스트가 존재한다면
             print(sum(costBetweenab)-max(costBetweenab))
-        else:
+        else:   # 로봇이 붙어있는 경우
             print(0)
         return
 
     for next_node,cost in R[node]:
         if not visited[next_node]:
-            # visited[next_node] = True
-            # res += cost
             costBetweenab.append(cost)
             dfs(next_node)
-            costBetweenab.remove(cost)
-            # visited[next_node] = False
+            costBetweenab.remove(cost)  # 진입했지만 반대쪽 로봇을 만나지 못했다면 cost 제거
 
 dfs(a)
