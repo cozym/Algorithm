@@ -16,8 +16,6 @@ def bfs(r,c):
     global localCnt,res
     q = deque()
     q.append((r,c))
-    visited[r][c] = False   # 들어온 노드 방문처리
-
     while q:
         L = len(q)
         for _ in range(L):
