@@ -1,28 +1,46 @@
 # 트리의 지름
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10000)
 
-T = int(input())
+n = int(input())
+R = [[] for _ in range(n+1)]
+visited = [False for _ in range(n+1)]
+endNodes = []
+res = 0
+for _ in range(n-1):
+    a,b,cost = map(int,input().split())
+    R[a].append((b,cost))
+    R[b].append((a,cost))
 
-for _ in range(T):
-    N = int(input())
-    R = [[] for _ in range(N+1)]
-    parent = [0]*(N+1)
-    ancestors = []
-    #depth = [0]*(N+1)
+# 종단 노드들 탐색
+def searchEndNodes(node):
+    visited[node] = True
+    isEndNode = True
+    for nextNode, nextCost in R[node]:
+        if visited[nextNode]:
+            continue
+        isEndNode = False
+        searchEndNodes(nextNode)
 
-    for _ in range(N-1):
-        a,b = map(int,input().split())
-        R[a].append(b)
-        parent[b] = a
+    if isEndNode:
+        endNodes.append(node)
 
-    l,r = map(int,input().split())
+searchEndNodes(1)
 
-    while l != 0:
-        ancestors.append(l)
-        l = parent[l]
-    while r != 0:
-        if r in ancestors:
-            print(r)
-            break
-        r = parent[r]
+# 시작 노드부터 다른 종단 노드까지의 길이를 측정하고 max를 저장
+def getMaxDistance(node, depth):
+    global res
+    visited[node] = True
+    res = max(res, depth)
+    for nextNode, nextCost in R[node]:
+        if visited[nextNode]:
+            continue
+        getMaxDistance(nextNode, depth+nextCost)
+
+# 미리 구해둔 종단 노드들로만 탐색하여 최적화
+for startNode in endNodes:
+    visited = [False for _ in range(n+1)]
+    getMaxDistance(startNode, 0)
+
+print(res)
