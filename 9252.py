@@ -2,27 +2,23 @@
 import sys
 input = sys.stdin.readline
 
-str_1 = input().strip()
-str_2 = input().strip()
-dp = [[0,0] for _ in range(len(str_1))]
-ans = 0
+str_1 = input().rstrip()
+str_2 = input().rstrip()
 
-# 해당 인덱스를 포함하며 가장 긴 수열
-# 이전 인덱스를 순회하며 마지막 인덱스 이후에 해당 인덱스값이 존재하는지 검사
-# 더 큰 값이 나오면 업데이트 (길이,마지막 인덱스 저장)
+dp_str = [['' for _ in range(len(str_2)+1)] for _ in range(len(str_1)+1)]
+ans = ''
 
-for idx in range(len(str_1)):
-    dp[idx] = [1,str_2.find(str_1[idx])]
-    if dp[idx][1] == -1:
-        dp[idx][0] = 0
-        continue
-    for frontIdx in range(idx):
-        if dp[frontIdx][0] + 1 > dp[idx][0]:
-            lastIdx = dp[frontIdx][1]
-            backIdx = str_2[lastIdx+1:].find(str_1[idx])
-            if backIdx != -1:
-                dp[idx] = [dp[frontIdx][0]+1,lastIdx+backIdx+1]
-    ans = max(ans,dp[idx][0])
+for r in range(1,len(str_1)+1):
+    for c in range(1,len(str_2)+1):
+        if str_1[r-1] == str_2[c-1]:
+            dp_str[r][c] = dp_str[r-1][c-1] + str_1[r-1]
+        else:
+            if len(dp_str[r-1][c]) > len(dp_str[r][c-1]):
+                dp_str[r][c] = dp_str[r-1][c]
+            else:
+                dp_str[r][c] = dp_str[r][c-1]
+        if len(ans) < len(dp_str[r][c]):
+            ans = dp_str[r][c]
 
+print(len(ans))
 print(ans)
-print(dp)
