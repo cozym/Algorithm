@@ -8,6 +8,7 @@ a,b = map(int,input().split())
 R = [[] for _ in range(n+1)]
 visited = [False for _ in range(n+1)]
 res = 0
+isRelative = False
 
 for _ in range(int(input())):
     x,y = map(int,input().split())
@@ -17,22 +18,22 @@ for _ in range(int(input())):
 def bfs(node):
     q = deque()
     q.append(node)
-    global res
+    global res, isRelative
     
     while q:
         L = len(q)
+        res += 1
         for i in range(L):
-            now = q.popleft()
-            res += 1
-            for next_node in R[now]:
+            current = q.popleft()
+            for next_node in R[current]:
                 if next_node == b:
+                    isRelative = True
                     return
                 if visited[next_node]:
                     continue
                 visited[next_node] = True
                 q.append(next_node)
-    res = -1
 
 bfs(a)
 
-print(res)
+print(res if isRelative else -1)
