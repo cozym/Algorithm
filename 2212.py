@@ -8,12 +8,13 @@ sensors = list(map(int,input().split()))
 distance = []
 
 sensors.sort()
-for idx in range(1,N):
-    distance.append(sensors[idx]-sensors[idx-1])
+for idx in range(N-1):
+    distance.append(sensors[idx+1]-sensors[idx])
 
 distance.sort()
 
 for _ in range(K-1):
-    distance.pop()
+    if distance:
+        distance.pop()
 
 print(sum(distance))
